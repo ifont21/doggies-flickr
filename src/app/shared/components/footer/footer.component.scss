@@ -1,0 +1,13 @@
+.doggies-flickr__footer {
+  width: 100%;
+  background: #333;
+  height: 5vh;
+  color: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  .footer-copyright{
+    font-size: 0.8em;
+    align-self: center;
+  }
+}

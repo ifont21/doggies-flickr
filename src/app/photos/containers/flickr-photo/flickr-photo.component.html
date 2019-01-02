@@ -1,0 +1,11 @@
+<div class="flickr-photo__container">
+  <div class="flickr-title">
+    <ng-container *ngTemplateOutlet="titleTpl"></ng-container>
+  </div>
+  <div class="flickr-content">
+    <ng-container *ngTemplateOutlet="contentTpl;
+    context:{
+      $implicit: photoSummary$ | async
+    }"></ng-container>
+  </div>
+</div>

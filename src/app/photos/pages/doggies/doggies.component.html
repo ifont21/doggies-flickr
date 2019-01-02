@@ -1,0 +1,21 @@
+<div class="doggies-flickr__wrapper-list">
+  <div class="doggies-filters">
+    Filters here
+  </div>
+  <div class="doggies-list">
+    <app-flickr-photo-container>
+      <ng-template #title>
+        <h3>Doggies</h3>
+        <span>Check out this awesome doggies</span>
+      </ng-template>
+      <ng-template #content let-photoSummary>
+        <div class="doggies-loading" *ngIf="photoSummary.loading; else list">
+          <app-spinner-loader></app-spinner-loader>
+        </div>
+        <ng-template #list>
+          <app-photo-list class="loading" [state]="photoSummary"></app-photo-list>
+        </ng-template>
+      </ng-template>
+    </app-flickr-photo-container>
+  </div>
+</div>

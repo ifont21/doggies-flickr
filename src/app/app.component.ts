@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { PhotosApiService } from './core/services/photos-api.service';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'doggies-flickr';
+
+  constructor() { }
 }

@@ -1,0 +1,53 @@
+.doggies-flickr__list-content {
+  height: 800px;
+  overflow-y: scroll;
+  width: 100%;
+  .total-list {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .photo-list {
+    display: flex;
+    flex-flow: wrap;
+    height: 400vw;
+    .photo-item {
+      flex-basis: 24.6%;
+      height: 228px;
+      &:not(:nth-child(4n)) {
+        margin-right: 0.3%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .caption {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        bottom: 232px;
+        transition: .8s all;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        .title,
+        .author {
+          color: transparent;
+          font-size: 0.8em;
+          margin-left: 5px;
+        }
+      }
+      &:hover {
+        .caption {
+          background: #000;
+          opacity: 0.6;
+          .title,
+          .author {
+            color: #fff;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+  }
+}

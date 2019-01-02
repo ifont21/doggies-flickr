@@ -1,0 +1,8 @@
+.doggies-loading {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  app-spinner-loader {
+    align-self: center;
+  }
+}

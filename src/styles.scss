@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  display: block;
+}
+
+a{
+  text-decoration: none;
+}
+
+.container{
+  width: 900px;
+  margin: 0 auto;
+  min-height: 87.2vh;
+}
