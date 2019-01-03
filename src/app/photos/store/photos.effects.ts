@@ -15,7 +15,7 @@ export class PhotosSummaryEffects {
     ofType<actionTypes.FetchPhotosSummary>(
       actionTypes.FETCH_PHOTOS_SUMMARY
     ),
-    debounceTime(500),
+    debounceTime(200),
     switchMap(action => this.api.getPhotoList(action.payload).pipe(
       map(payload => payload.photos),
       map(actionCreators.fetchPhotosSummarySuccess),
@@ -29,7 +29,7 @@ export class PhotosSummaryEffects {
     ofType<actionTypes.FetchMorePhotosSummary>(
       actionTypes.FETCH_MORE_PHOTOS_SUMMARY
     ),
-    debounceTime(500),
+    debounceTime(200),
     switchMap(action => this.api.getPhotoList(action.payload).pipe(
       map(payload => payload.photos),
       map(actionCreators.fetchMorePhotosSummarySuccess),

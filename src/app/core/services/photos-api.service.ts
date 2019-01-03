@@ -17,8 +17,6 @@ export class PhotosApiService {
     const photoOptions = new PhotoOptions(options);
     url += `${photoOptions.buildQuery()}`;
 
-    return this.http.get(url).pipe(
-      catchError(val => of(val))
-    );
+    return this.http.get(url);
   }
 }

@@ -1,3 +1,4 @@
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { VirtualScrollDirective } from './directives/virtual-scroll.directive';
     VirtualScrollDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ModalModule.forRoot()
   ],
   exports: [
     CommonModule,

@@ -1,3 +1,4 @@
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { CoreModule } from './../core/core.module';
 import { PhotosRoutesModule } from './photos.routes';
 import { SharedModule } from './../shared/shared.module';
@@ -24,6 +25,9 @@ import { PhotoListComponent } from './components/photo-list/photo-list.component
     SharedModule,
     PhotosStoreModule,
     PhotosRoutesModule
+  ],
+  providers: [
+    BsModalService
   ]
 })
 export class PhotosModule { }

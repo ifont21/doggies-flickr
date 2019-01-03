@@ -15,7 +15,7 @@ export class DoggiesComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(actions.fetchPhotosSummary({
       extras: 'media,url_n,owner_name',
-      tags: 'dogs'
+      tags: 'dogs,puppy'
     }));
   }
 

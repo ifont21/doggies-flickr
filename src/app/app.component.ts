@@ -1,6 +1,4 @@
-import { PhotosApiService } from './core/services/photos-api.service';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
