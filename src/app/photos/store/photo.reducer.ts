@@ -1,4 +1,4 @@
-import { PhotosSummaryState } from './photos.state';
+import { PhotosSummaryState, Photo } from './photos.state';
 import * as actionTypes from './photos.type';
 
 export function reducer(
@@ -7,37 +7,46 @@ export function reducer(
 ): PhotosSummaryState {
   switch (action.type) {
     case actionTypes.FETCH_PHOTOS_SUMMARY:
-      return { ...state, loading: true, error: null };
+      return {
+        ...state,
+        loading: true,
+        error: null,
+        loadingScroll: false
+      };
 
     case actionTypes.FETCH_MORE_PHOTOS_SUMMARY:
-      return { ...state, loading: true, error: null };
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        loadingScroll: true
+      };
 
     case actionTypes.FETCH_PHOTOS_SUMMARY_SUCCESS:
       return {
-        flickr: { ...action.payload },
         loading: false,
-        error: null
+        flickr: action.payload,
+        error: null,
+        loadingScroll: false
       };
 
     case actionTypes.FETCH_MORE_PHOTOS_SUMMARY_SUCCESS:
       return {
-        flickr: { ...action.payload },
+        flickr: {
+          ...state.flickr,
+          photo: [...state.flickr.photo, ...action.payload.photo],
+          page: action.payload.page
+        },
         loading: false,
+        loadingScroll: false,
         error: null
       };
-      // return {
-      //   flickr: {
-      //     photos: {}
-      //   }
-      //   // flickr: { ...state.flickr.photos['photo  ...action.payload },
-      //   loading: false,
-      //   error: null
-      // };
 
     case actionTypes.FETCH_PHOTOS_SUMMARY_FAILURE:
       return {
         ...state,
         loading: false,
+        loadingScroll: false,
         error: action.payload
       };
 

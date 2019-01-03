@@ -1,16 +1,18 @@
 <div class="doggies-flickr__list-content" 
   appVirtualScroll 
-  [payload]="payload">
+  (update)="updateScroll($event)">
   <div class="total-list">
     <span>total: {{total}}</span>
   </div>
   <div class="photo-list">
     <div class="photo-item" *ngFor="let photo of photos">
-        <a href="javascript:void(0)">
-          <img [src]="photo.url_n"
-                 [alt]="photo.title" 
+        <a href="javascript:void(0)"> 
+          <img *ngIf="photo.url_n" [src]="photo.url_n"
+                 [alt]="photo.title"
                  [width]="photo.width_n" 
-                 [height]="photo.height_n" />
+                 [height]="photo.height_n" 
+                 (onerror)="handleImgError($event)"/>
+            <img *ngIf="!photo.url_n" src="../../../../assets/images/puppy.jpg">
             <div class="overlay"></div>
             <div class="caption">
               <span class="title">{{photo.title}}</span>
@@ -18,5 +20,8 @@
             </div>
         </a>
       </div>
+  </div>
+  <div class="more-doggies-loading" *ngIf="state.loadingScroll">
+    <app-spinner-loader></app-spinner-loader>
   </div>
 </div>

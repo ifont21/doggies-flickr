@@ -1,4 +1,3 @@
-import { SharedPhotoOptions } from './../../../shared/models/photo-options';
 import { PhotoState } from './../../store/photos.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, Input } from '@angular/core';
@@ -19,21 +18,18 @@ export class PhotoListComponent {
   get photos() {
     return this.state &&
       this.state.flickr &&
-      this.state.flickr.photos &&
-      this.state.flickr.photos.photo;
+      this.state.flickr.photo;
   }
 
   get total() {
     return this.state &&
       this.state.flickr &&
-      this.state.flickr.photos &&
-      this.state.flickr.photos.total;
+      this.state.flickr.total;
   }
 
   get payload() {
     const pageState = this.state &&
-      this.state.flickr &&
-      this.state.flickr.photos;
+      this.state.flickr;
 
     return {
       page: pageState.page + 1,
@@ -43,5 +39,9 @@ export class PhotoListComponent {
   }
 
   constructor(private store: Store<PhotoState>) { }
+
+  updateScroll($event) {
+    this.store.dispatch(actions.fetchMorePhotosSummary(this.payload));
+  }
 
 }

@@ -17,6 +17,7 @@ export class PhotosSummaryEffects {
     ),
     debounceTime(500),
     switchMap(action => this.api.getPhotoList(action.payload).pipe(
+      map(payload => payload.photos),
       map(actionCreators.fetchPhotosSummarySuccess),
       catchError(error => of(actionCreators.fetchPhotosSummaryFailure(error))),
     ))
@@ -30,6 +31,7 @@ export class PhotosSummaryEffects {
     ),
     debounceTime(500),
     switchMap(action => this.api.getPhotoList(action.payload).pipe(
+      map(payload => payload.photos),
       map(actionCreators.fetchMorePhotosSummarySuccess),
       catchError(error => of(actionCreators.fetchPhotosSummaryFailure(error))),
     ))

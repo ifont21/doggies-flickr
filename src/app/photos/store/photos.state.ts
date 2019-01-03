@@ -7,19 +7,16 @@ export interface PhotoState {
 export interface PhotosSummaryState {
   flickr: FlickrPhotos;
   loading: boolean;
+  loadingScroll: boolean;
   error: HttpErrorResponse;
 }
 
 export interface FlickrPhotos {
   total?: string;
-  pagination?: Page;
-  photos?: Photo[];
-}
-
-export interface Page {
   page: number;
   pages: number;
   perPage: number;
+  photo?: Photo[];
 }
 
 export interface Owner {
@@ -46,9 +43,13 @@ export const initialState: PhotoState = {
   photosSummary: {
     flickr: {
       total: '0',
-      photos: []
+      photo: [],
+      page: 0,
+      pages: 0,
+      perPage: 0
     },
     loading: false,
+    loadingScroll: false,
     error: null
   }
 };

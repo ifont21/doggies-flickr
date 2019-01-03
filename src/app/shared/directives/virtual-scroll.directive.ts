@@ -1,25 +1,18 @@
-import { PhotoState } from './../../photos/store/photos.state';
-import { Store } from '@ngrx/store';
-import * as actions from '../../photos/store/photos.actions';
 import {
   Directive,
-  ElementRef,
   HostListener,
   Output,
   EventEmitter,
-  Input,
-  OnInit,
-  OnChanges,
-  SimpleChanges
+  Input
 } from '@angular/core';
 
 @Directive({
   selector: '[appVirtualScroll]'
 })
-export class VirtualScrollDirective implements OnInit, OnChanges {
+export class VirtualScrollDirective {
 
   @Input()
-  percentageScroll = 80;
+  percentageScroll = 97;
 
   @Input()
   payload: any;
@@ -29,19 +22,7 @@ export class VirtualScrollDirective implements OnInit, OnChanges {
 
   private _percentValue = 0;
 
-  constructor(
-    private _el: ElementRef,
-    private store: Store<PhotoState>
-  ) { }
-
-  ngOnInit(): void {
-
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-  }
+  constructor() { }
 
   @HostListener('scroll', ['$event'])
   onScroll(event: UIEvent) {
@@ -52,7 +33,7 @@ export class VirtualScrollDirective implements OnInit, OnChanges {
     );
     this._percentValue = this._percentValue !== percent ? percent : this._percentValue;
     if (this._percentValue === this.percentageScroll) {
-      this.store.dispatch(actions.fetchMorePhotosSummary(this.payload));
+      this.update.emit(true);
     }
   }
 
