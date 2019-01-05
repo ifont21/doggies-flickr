@@ -12,7 +12,7 @@ import {
 export class VirtualScrollDirective {
 
   @Input()
-  percentageScroll = 97;
+  percentageScroll = 95;
 
   @Input()
   payload: any;

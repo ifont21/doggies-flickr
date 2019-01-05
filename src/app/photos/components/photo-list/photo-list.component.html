@@ -6,7 +6,7 @@
   </div>
   <div class="photo-list">
     <div class="photo-item" *ngFor="let photo of photos">
-        <a href="javascript:void(0)"> 
+        <a href="javascript:void(0)" (click)="details(photo.id)"> 
           <img *ngIf="photo.url_n" [src]="photo.url_n"
                  [alt]="photo.title"
                  [width]="photo.width_n" 

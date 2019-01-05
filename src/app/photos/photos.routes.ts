@@ -11,13 +11,16 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'doggies'
+        redirectTo: 'doggies',
+        pathMatch: 'full'
       },
       {
         path: 'doggies',
-        component: DoggiesComponent,
         children: [
+          {
+            path: '',
+            component: DoggiesComponent
+          },
           {
             path: ':id',
             component: DoggyComponent
@@ -25,7 +28,7 @@ export const routes: Routes = [
         ]
       },
       {
-        path: 'authors/:id',
+        path: 'author-others/:id',
         component: AuthorOthersComponent
       }
     ]

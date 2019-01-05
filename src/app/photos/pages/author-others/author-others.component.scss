@@ -1,0 +1,14 @@
+.doggies-flickr__wrapper-list {
+  margin-top: 20px;
+  .title {
+    font-weight: 700;
+  }
+}
+.doggies-loading {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  app-spinner-loader {
+    align-self: center;
+  }
+}

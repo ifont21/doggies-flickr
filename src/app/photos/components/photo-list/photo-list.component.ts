@@ -2,6 +2,7 @@ import { PhotoState } from './../../store/photos.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, Input } from '@angular/core';
 import * as actions from '../../store/photos.actions';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-photo-list',
@@ -13,7 +14,8 @@ export class PhotoListComponent {
   @Input()
   state: any;
 
-  buffer = [];
+  @Input()
+  payload: any;
 
   get photos() {
     return this.state &&
@@ -27,21 +29,34 @@ export class PhotoListComponent {
       this.state.flickr.total;
   }
 
-  get payload() {
+  get payloadScroll() {
     const pageState = this.state &&
       this.state.flickr;
 
     return {
       page: pageState.page + 1,
-      tags: 'dogs',
-      extras: 'media,url_n,owner_name'
+      ...this.payload
     };
   }
 
-  constructor(private store: Store<PhotoState>) { }
+  constructor(
+    private store: Store<PhotoState>,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   updateScroll($event) {
-    this.store.dispatch(actions.fetchMorePhotosSummary(this.payload));
+    this.store.dispatch(actions.fetchMorePhotosSummary(this.payloadScroll));
+  }
+
+  details(photoId: string) {
+    if (this.payload.userId) {
+      return;
+    }
+    this.router.navigate(
+      [photoId],
+      { relativeTo: this.route }
+    );
   }
 
 }

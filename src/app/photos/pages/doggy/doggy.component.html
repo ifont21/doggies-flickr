@@ -1,3 +1,32 @@
-<p>
-  doggy works!
-</p>
+<div class="flickr-doggy__wrapper" *ngIf="!(details$ |async).loading; else loading">
+  <div class="flickr-doggy-media">
+    <div class="flickr-doggy-image">
+      <img [src]="getImageProperties((details$ | async).details).source" [width]="getImageProperties((details$ | async).details).width"
+        [height]="getImageProperties((details$ | async).details).height" />
+    </div>
+    <div class="flickr-doggy-divider"></div>
+    <div class="flickr-doggy-mainInfo">
+      <span class="info-title">{{ getInfo((details$ | async).details,'title') }}</span>
+      <span class="info-takenDate">Taken on {{ getInfo((details$ | async).details,'takenDate') | date:'mediumDate'}}</span>
+      <span *ngIf="getGeolocation((details$ | async).details); else noAvailable">
+        Taken in {{ getGeolocation((details$ | async).details).country._content}}
+      </span>
+      <ng-template #noAvailable>
+        <span>Location No Available</span>
+      </ng-template>
+    </div>
+  </div>
+  <div class="flickr-description">
+    <span>{{ getInfo((details$ | async).details,'description') }}</span>
+  </div>
+  <div class="user-photos" *ngIf="getOwner((details$ | async).details)">
+    <a [routerLink]="['../../author-others',getOwner((details$ | async).details).nsid]">
+      <span>See more of this user</span>
+    </a>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="doggies-loading">
+    <app-spinner-loader></app-spinner-loader>
+  </div>
+</ng-template>

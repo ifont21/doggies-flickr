@@ -1,3 +1,22 @@
-<p>
-  author-others works!
-</p>
+<div class="doggies-flickr__wrapper-list">
+    <div class="doggies-list">
+      <app-flickr-photo-container>
+        <ng-template #title>
+          <h3 class="title">More of the Author</h3>
+          <span>Do you like it ?</span>
+        </ng-template>
+        <ng-template #content let-photoSummary>
+          <div class="doggies-loading" *ngIf="photoSummary.loading; else list">
+            <app-spinner-loader></app-spinner-loader>
+          </div>
+          <ng-template #list>
+            <app-photo-list 
+              class="loading" 
+              [state]="photoSummary" 
+              [payload]="payload">
+            </app-photo-list>
+          </ng-template>
+        </ng-template>
+      </app-flickr-photo-container>
+    </div>
+  </div>

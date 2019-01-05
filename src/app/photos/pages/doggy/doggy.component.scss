@@ -1,0 +1,62 @@
+.flickr-doggy__wrapper {
+  display: block;
+  width: 100%;
+  margin-top: 35px;
+  .flickr-doggy-media {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 8px;
+    div {
+      &:nth-child(1) {
+        // flex-basis: 50%;
+        margin-right: 20px;
+        img {
+          height: 338px;
+          -webkit-box-shadow: 6px 7px 29px -5px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 6px 7px 29px -5px rgba(0, 0, 0, 0.75);
+          box-shadow: 6px 7px 29px -5px rgba(0, 0, 0, 0.75);
+        }
+      }
+      &:nth-child(2) {
+        // flex-basis: 1%;
+        width: 1px;
+        border-left: 2px solid grey;
+        margin: 6px 0;
+        opacity: 0.2;
+      }
+      &:nth-child(3) {
+        // flex-basis: 30%;
+        width: 30%;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        span {
+          margin-left: 16px;
+          &:nth-child(1) {
+            font-size: 1.8em;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+  .flickr-description {
+    padding: 0 7px;
+    text-align: justify;
+  }
+  .user-photos {
+    padding: 0 7px;
+    margin-top: 5px;
+  }
+}
+.doggies-loading {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  app-spinner-loader {
+    align-self: center;
+  }
+}
+

@@ -10,13 +10,17 @@ import * as actions from '../../store/photos.actions';
 })
 export class DoggiesComponent implements OnInit {
 
+  get payload() {
+    return {
+      extras: 'media,url_n,owner_name',
+      tags: 'dogs'
+    };
+  }
+
   constructor(private store: Store<PhotoState>) { }
 
   ngOnInit() {
-    this.store.dispatch(actions.fetchPhotosSummary({
-      extras: 'media,url_n,owner_name',
-      tags: 'dogs,puppy'
-    }));
+    this.store.dispatch(actions.fetchPhotosSummary(this.payload));
   }
 
 }

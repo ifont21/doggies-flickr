@@ -1,8 +1,7 @@
 import { PhotoOptions, SharedPhotoOptions } from './../../shared/models/photo-options';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, forkJoin } from 'rxjs';
 
 @Injectable()
 export class PhotosApiService {
@@ -18,5 +17,16 @@ export class PhotosApiService {
     url += `${photoOptions.buildQuery()}`;
 
     return this.http.get(url);
+  }
+
+  getPhotoInfo(photoId: string): Observable<any> {
+    let urlInfo =
+      `${this._rootURI}?method=flickr.photos.getInfo&api_key=${this._apiKey}&nojsoncallback=1&format=json&`;
+    let urlSizes =
+      `${this._rootURI}?method=flickr.photos.getSizes&api_key=${this._apiKey}&nojsoncallback=1&format=json&`;
+    urlInfo += `photo_id=${photoId}`;
+    urlSizes += `photo_id=${photoId}`;
+
+    return forkJoin([this.http.get(urlInfo), this.http.get(urlSizes)]);
   }
 }

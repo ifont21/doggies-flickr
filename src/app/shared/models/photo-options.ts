@@ -12,6 +12,7 @@ export class PhotoOptions {
   format?: string;
   contentType?: number;
   noJsonCallback?: string;
+  sort?: string;
 
   constructor(options?: SharedPhotoOptions) {
     this.userId = options && options.userId ? options.userId : null;
@@ -27,6 +28,7 @@ export class PhotoOptions {
     this.format = options && options.format ? options.format : 'json';
     this.contentType = options && options.contentType ? options.contentType : 1;
     this.noJsonCallback = options && options.noJsonCallback ? options.noJsonCallback : '1';
+    this.sort = options && options.sort ? options.sort : 'relevance';
   }
 
   buildQuery() {
@@ -54,6 +56,7 @@ export interface SharedPhotoOptions {
   format?: string;
   contentType?: number;
   noJsonCallback?: string;
+  sort?: string;
 }
 
 export enum Options {
@@ -69,5 +72,6 @@ export enum Options {
   page = 'page',
   format = 'format',
   contentType = 'content-type',
-  noJsonCallback = 'nojsoncallback'
+  noJsonCallback = 'nojsoncallback',
+  sort = 'sort'
 }

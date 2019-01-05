@@ -9,11 +9,14 @@ body {
   display: block;
 }
 
-a{
+a {
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-.container{
+.container {
   width: 900px;
   margin: 0 auto;
   min-height: 87.2vh;

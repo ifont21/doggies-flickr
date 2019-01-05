@@ -9,3 +9,10 @@ export const selectPhotosSummary = createSelector(
   selectPhotos,
   (state: PhotoState) => state && state.photosSummary
 );
+
+export const selectDetails = createSelector(
+  selectPhotos,
+  (state: PhotoState) => state && state.detail
+);
+
+

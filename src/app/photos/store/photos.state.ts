@@ -1,7 +1,9 @@
+import { DetailState } from './details/details.state';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export interface PhotoState {
   photosSummary: PhotosSummaryState;
+  detail: DetailState;
 }
 
 export interface PhotosSummaryState {
@@ -51,5 +53,9 @@ export const initialState: PhotoState = {
     loading: false,
     loadingScroll: false,
     error: null
+  },
+  detail: {
+    details: null,
+    loading: false
   }
 };
