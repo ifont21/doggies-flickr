@@ -1,27 +1,37 @@
-# DoggiesFlickr
+**Doggies Flickr Application** - Ignacio Fontalvo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
+ **1**. Installation
+ **2**. Features
+ **3**. Missing
+ **4**. what i would have done  
+ **5**. improvements
 
-## Development server
+**1. Installation**
+   Tech Stack used :
+ - Angular 6
+ - ngrx/store
+ - rxjs
+ - Bootstrap ( only to show modals )
+ - Docker
+ - Flickr Api services
+ 
+ For docker container: 
+  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    docker-compose up --> // to start application
+    // open up the browser and copy http://localhost:4200
+    docker-compose rm && docker-compose build --no-cache && docker-compose up
 
-## Code scaffolding
+For manual installation:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    npm run start:dev ---> // to start application
+    node -v --> 8.11.1
+    npm -v --> 6.1.0
+**2. features**
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ - First 100 Dogs and able to see its name and owner
+ - Infinite scroll to see other groups by calling the Api service
+ - loadings indicators when loading list of photos and details as well as scrolling down using the infinite scroll
+ -  Error handling modal when there was an error on calling the Api
+ - Able to see other pictures from authors
+ - Fetch Geolocation info but wasn't able to show the Map due to some issues getting the Google Api_Key.
