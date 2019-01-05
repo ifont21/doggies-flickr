@@ -25,7 +25,7 @@
 
 For manual installation:
 
-    npm run start:dev ---> // to start application
+    npm start ---> // to start application
     node -v --> 8.11.1
     npm -v --> 6.1.0
 **2. features**
